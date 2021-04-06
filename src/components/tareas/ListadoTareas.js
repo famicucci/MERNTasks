@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Tarea from './Tarea';
 
-const ListadoTareas = () => {
+const ListadoTareass = () => {
 	const tareasProyecto = [
 		{ nombre: 'Elegir Plataforma', estado: true },
 		{ nombre: 'Elegir Colores', estado: false },
@@ -29,4 +29,4 @@ const ListadoTareas = () => {
 	);
 };
 
-export default ListadoTareas;
+export default ListadoTareass;

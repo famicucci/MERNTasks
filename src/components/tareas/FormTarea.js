@@ -9,7 +9,12 @@ const FormTarea = () => {
 
 	// Obtener la funcion del context de tarea
 	const tareasContext = useContext(tareaContext);
-	const { agregarTarea } = tareasContext;
+	const {
+		errortarea,
+		agregarTarea,
+		validarTarea,
+		obtenerTareas,
+	} = tareasContext;
 
 	// State del formulario
 	const [tarea, guardarTarea] = useState({ nombre: '' });
@@ -32,15 +37,21 @@ const FormTarea = () => {
 		e.preventDefault();
 
 		// Validar
-
-		// Pasar la validación
+		if (nombre.trim() === '') {
+			validarTarea();
+			return;
+		}
 
 		// Agregar la nueva tarea al state de tareas
 		tarea.proyectoId = proyectoActual.id;
 		tarea.estado = false;
 		agregarTarea(tarea);
 
+		// Obtener las tareas del proyecto actual
+		obtenerTareas(proyectoActual.id);
+
 		// Reiniciar el form
+		guardarTarea({ nombre: '' });
 	};
 
 	return (
@@ -64,6 +75,10 @@ const FormTarea = () => {
 					/>
 				</div>
 			</form>
+
+			{errortarea ? (
+				<p class="mensaje error">El nombre de la tarea es obligatorio</p>
+			) : null}
 		</div>
 	);
 };

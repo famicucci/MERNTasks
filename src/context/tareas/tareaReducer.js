@@ -9,7 +9,7 @@ import {
 	LIMPIAR_TAREA,
 } from '../../types';
 
-export default (state, action) => {
+const TareaReducer = (state, action) => {
 	switch (action.type) {
 		case TAREAS_PROYECTO:
 			return {
@@ -56,3 +56,5 @@ export default (state, action) => {
 			return state;
 	}
 };
+
+export default TareaReducer;
